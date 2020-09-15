@@ -4,26 +4,36 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>ULife Yau</title>
+   <title>ULife QRCode Detector</title>
 </head>
 <body>
-
 </body>
 <script src="mobile-detect.js"></script>
 <script type="text/javascript">
-   // var md = new MobileDetect(window.navigator.userAgent);
    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-		var element = document.getElementById('text');
-		if (isMobile) {
-         // IOS
 
-         // Android
-
-         // Others
-  			console.log("You are using Mobile");
-		} else {
-			console.log("You are using Desktop");
+   if ( isMobile ) {
+      console.log("You are using Mobile");
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      // IOS
+      if ( isIOS ) {
+         console.log("You are using IOS");
          window.location.replace("https://apps.apple.com/mn/app/ulife%E5%84%AA%E7%94%9F%E6%B4%BB/id1526888374");
-		}
+      } else {
+         var isAndroid = /Android/i.test(navigator.userAgent);
+         // Android
+         if ( isAndroid ) {
+            console.log("You are using Android");
+            window.location.replace("https://play.google.com/store/apps/details?id=com.choiho.ulife");
+         } else {
+            // Others OS
+            console.log("You are using others OS");
+            alert("Sorry. Your mobile is not suitable for our application.");
+         }
+      }
+   } else {
+      console.log("You are using Desktop");
+      alert("Sorry. You are using Desktop. Please use your mobile to scan the QRCode again.");
+   }
 </script>
 </html>
